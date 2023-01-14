@@ -1,0 +1,80 @@
+Index: src/App.test.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { render, screen } from '@testing-library/react';\nimport App from './App';\n\ntest('renders learn react link', () => {\n  render(<App />);\n  const linkElement = screen.getByText(/learn react/i);\n  expect(linkElement).toBeInTheDocument();\n});\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/App.test.tsx	(date 1673466643000)
++++ src/App.test.tsx	(date 1673709405000)
+@@ -1,9 +1,48 @@
+-import React from 'react';
+-import { render, screen } from '@testing-library/react';
+-import App from './App';
++import React from "react";
++import { render } from "@testing-library/react";
++import App from "./App";
++import { handleAddingVideo, API_KEY} from "./Utils/APIUtils"
++const axios = require("axios");
++
++jest.mock("axios");
+ 
+-test('renders learn react link', () => {
++
++test("renders learn react link", async() => {
+   render(<App />);
+-  const linkElement = screen.getByText(/learn react/i);
+-  expect(linkElement).toBeInTheDocument();
++  const { container } = render(<App />);
++  const videoId = "lcOxhH8N3Bo";
++
++  const addedVideo = await handleAddingVideo(videoId, API_KEY)
++  console.log(addedVideo, "addedVideo")
++  //expect(addedVideo.toEqual("video added"))
++
++  // const inputVideoId = (container.getElementsByTagName('input')[0] as HTMLElement).
++  // //innerText('change', { target: { value: 'Hello' } })
++  // const columns = rows.length && rows[0].getElementsByClassName('board-card');
++  // expect(columns.length).toBe(4)
+ });
++
++// test("Simulate adding video id to list and play", async() =>{
++//   const result = render(<App />);
++//   const input = await result.findByTestId('video-input');
++//   //const addButton = result.find("button.list-controls-button");
++//  // const playlist = result.find(".list");
++//   //const player = result.find(".youtube-player");
++//
++//   input.trigger()
++//
++//   // input."change", {
++//   //   target: {
++//   //     value: "lcOxhH8N3Bo",
++//   //   },
++//   // });
++//   //addButton.click();
++//
++//   new Promise((resolve) => {
++//     setTimeout(resolve, 500);
++//   }).then(() => {
++//     //expect(playlist.children.length..equal(1));
++//   });
++// });
++
++
+Index: src/setupTests.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// jest-dom adds custom jest matchers for asserting on DOM nodes.\n// allows you to do things like:\n// expect(element).toHaveTextContent(/react/i)\n// learn more: https://github.com/testing-library/jest-dom\nimport '@testing-library/jest-dom';\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/setupTests.ts	(date 1673466643000)
++++ src/setupTests.ts	(date 1673681771000)
+@@ -3,3 +3,6 @@
+ // expect(element).toHaveTextContent(/react/i)
+ // learn more: https://github.com/testing-library/jest-dom
+ import '@testing-library/jest-dom';
++
++
++
