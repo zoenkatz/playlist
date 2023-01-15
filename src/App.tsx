@@ -19,6 +19,10 @@ function App() {
   const initialState = useContext(AppContext);
   const [state, dispatch] = useReducer(AppReducer, initialState, undefined);
 
+  useEffect(() => {
+    openSocket();
+  }, []);
+
   const openSocket = async () => {
     const socket = await openSocketInstance();
     registerSocketMessages(socket, (message: { playlist: [] }) => {
@@ -28,10 +32,6 @@ function App() {
       });
     });
   };
-
-  useEffect(() => {
-    openSocket();
-  }, []);
 
   const removeVideo = async (videoId: string) => {
     await deleteVideo({ id: videoId });

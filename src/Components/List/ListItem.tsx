@@ -3,11 +3,9 @@ import React from "react";
 const ListItem = ({
   snippet,
   contentDetails,
-  id,
 }: {
   snippet: any;
   contentDetails: any;
-  id: string;
 }) => {
   const { duration } = contentDetails;
   const { title } = snippet;

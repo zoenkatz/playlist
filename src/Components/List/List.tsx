@@ -8,7 +8,13 @@ const List = ({ listData }: { listData: [] }) => {
         listData.map((listItem: { id: string; items: any }) => {
           const { items, id } = listItem;
           const { snippet, contentDetails } = items[0];
-          return <ListItem key={id} snippet={snippet} contentDetails={contentDetails} id={id} />;
+          return (
+            <ListItem
+              key={id}
+              snippet={snippet}
+              contentDetails={contentDetails}
+            />
+          );
         })}
     </div>
   );

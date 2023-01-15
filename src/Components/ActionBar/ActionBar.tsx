@@ -21,7 +21,6 @@ const ActionBar = ({
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        data-testid="video-input"
       />
       <Button value="Add" onClick={onSubmit} className="list-controls-button"/>
     </div>
