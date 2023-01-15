@@ -69,22 +69,3 @@ export const registerSocketMessages = (socket: any, handler: any) => {
 export const openSocketInstance = () => {
   return openSocket(`${requestHostName}/`);
 };
-
-export const joinSocketRoom = (
-  socket: any,
-  roomChatId: number,
-  callbackOnJoined: any,
-  isChatDialog: boolean
-) => {
-  socket.emit("join", {
-    _id: roomChatId,
-  });
-
-  socket.on("joined", (roomData: any) => {
-    callbackOnJoined(roomChatId);
-  });
-};
-
-export const sendMessage = (socket: any, messageSent: any) => {
-  socket.emit("message", messageSent);
-};
